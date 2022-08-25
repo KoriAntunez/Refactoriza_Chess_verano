@@ -17,10 +17,10 @@ public class ChessMenuBar
      * Create a new ChessMenuBar object.
      */
     public ChessMenuBar(){
-        String[] menuCategories = { "Archivo", "Opciones", "Ayuda" };
+        String[] menuCategories = { "File", "Options", "Help" };
         String[] menuItemLists =
-        { "Nuevo Juego/Reiniciar, salir", "Alternar cementerio, Alternar registro de juego",
-          "Sobre" };
+        { "New game/restart,Exit", "Toggle graveyard,Toggle game log",
+          "About" };
         for ( int i = 0; i < menuCategories.length; i++ ){
             JMenu currMenu = new JMenu( menuCategories[i] );
             String[] currMenuItemList = menuItemLists[i].split( "," );
@@ -52,17 +52,17 @@ public class ChessMenuBar
         @Override
         public void actionPerformed( ActionEvent event ){
             String buttonName = ( (JMenuItem)event.getSource() ).getText();
-            if ( buttonName.equals( "Sobre" ) ){
-                SobreHandler();
+            if ( buttonName.equals( "About" ) ){
+                aboutHandler();
             }
-            else if ( buttonName.equals( "Nuevo juego/reiniciar" ) ){
+            else if ( buttonName.equals( "New game/restart" ) ){
                 restartHandler();
             }
-            else if ( buttonName.equals( "alternar el registro del juego" ) ){
+            else if ( buttonName.equals( "Toggle game log" ) ){
                 toggleGameLogHandler();
             }
-            else if ( buttonName.equals( "salir" ) ){
-                salirHandler();
+            else if ( buttonName.equals( "Exit" ) ){
+                exitHandler();
             }
             else
             {
@@ -72,9 +72,9 @@ public class ChessMenuBar
     }
     // ----------------------------------------------------------
     /**
-     * Takes an appropriate action if the Sobre button is clicked.
+     * Takes an appropriate action if the about button is clicked.
      */
-    private void SobreHandler(){
+    private void aboutHandler(){
         JOptionPane.showMessageDialog(
             this.getParent(),
             "YetAnotherChessGame v1.0 by:\nBen Katz\nMyles David\n"
@@ -87,13 +87,13 @@ public class ChessMenuBar
         ( (ChessPanel)this.getParent() ).getGameEngine().reset();
     }
     /**
-     * Takes an appropriate action if the salir button is clicked.
-     * Uses Tony Allevato's code for saliring a GUI app without System.salir()
+     * Takes an appropriate action if the exit button is clicked.
+     * Uses Tony Allevato's code for exiting a GUI app without System.exit()
      * calls.
      */
-    private void salirHandler(){
-        JOptionPane.showMessageDialog( this.getParent(), "gracias por irte"
-            + ", cobarde! >:(" );
+    private void exitHandler(){
+        JOptionPane.showMessageDialog( this.getParent(), "Thanks for leaving"
+            + ", quitter! >:(" );
         Component possibleFrame = this;
         while ( possibleFrame != null && !( possibleFrame instanceof JFrame ) ){
             possibleFrame = possibleFrame.getParent();

@@ -2,27 +2,34 @@ import java.awt.GridLayout;
 import javax.swing.*;
 // -------------------------------------------------------------------------
 /**
- * Aqui es donde yacen las piezas después de ser capturadas.
+ * Represents the graveyard where pieces lie after being captured.
  *
+ * @author Ben Katz (bakatz)
+ * @author Myles David II (davidmm2)
+ * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
 public class ChessGraveyard
     extends JPanel{
     private String title;
+    // ----------------------------------------------------------
     /**
-     * Cree un nuevo objeto ChessGraveyard.
+     * Create a new ChessGraveyard object.
      *
      * @param title
-     *            Titulo de graveyard
+     *            the title of the graveyard
      */
     public ChessGraveyard( String title ){
         this.title = title;
         this.add( new JLabel( title ) );
         this.setLayout( new GridLayout( 8, 0 ) );
     }
-
+    // ----------------------------------------------------------
     /**
-     * Añade una pieza al cementerio.
+     * Adds a piece to the graveyard.
+     *
+     * @param piece
+     *            the GamePiece to add
      */
     public void addPiece( ChessGamePiece piece ){
         piece.setPieceLocation( -1, -1 );
@@ -30,9 +37,9 @@ public class ChessGraveyard
         pieceLabel.setIcon( piece.getImage() );
         this.add( pieceLabel );
     }
-    
+    // ----------------------------------------------------------
     /**
-     * Elimina todas las piezas del cementerio.
+     * Removes all pieces from the graveyard.
      */
     public void clearGraveyard(){
         this.removeAll();

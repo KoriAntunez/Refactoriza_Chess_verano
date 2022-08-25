@@ -99,18 +99,18 @@ public class Knight
     public ImageIcon createImageByPieceType(){
         if ( getColorOfPiece() == ChessGamePiece.WHITE ){
             return new ImageIcon(
-                getClass().getResource("ChessImages/WhiteKnight.gif")
+                getClass().getResource("chessImages/WhiteKnight.gif")
             );            
         }
         else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
             return new ImageIcon(
-                getClass().getResource("ChessImages/BlackKnight.gif")
+                getClass().getResource("chessImages/BlackKnight.gif")
             );            
         }
         else
         {
             return new ImageIcon(
-                getClass().getResource("ChessImages/default-Unassigned.gif")
+                getClass().getResource("chessImages/default-Unassigned.gif")
             );            
         }
     }
