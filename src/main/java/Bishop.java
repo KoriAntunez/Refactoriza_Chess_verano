@@ -38,8 +38,6 @@ public class Bishop extends ChessGamePiece{
         //se puede refactorizar
         //Se emplea un Método para calcular todos los posibles movimientos
         ArrayList<String> allMoves = MovimientosCalculados(board);
-        //ArrayList<String> allMoves = new ArrayList<String>();
-        //allMoves.addAll( calcularMoves );
         return allMoves;
     }
 
