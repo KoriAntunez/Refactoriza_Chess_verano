@@ -25,12 +25,7 @@ public class Bishop extends ChessGamePiece{
      *            the game board to calculate moves on
      * @return ArrayList<String> the moves
      */
-    @Override
-    protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
-
-    }
-
-    public ArrayList<String> MovimientosCalculados (ChessGameBoard board){
+    protected ArrayList<String> MovimientosCalculados (ChessGameBoard board){
         ArrayList<String> northEastMoves = calculateNorthEastMoves( board, 8 );
         ArrayList<String> northWestMoves = calculateNorthWestMoves( board, 8 );
         ArrayList<String> southEastMoves = calculateSouthEastMoves( board, 8 );
@@ -65,4 +60,9 @@ public class Bishop extends ChessGamePiece{
             );
         }
     }
+	@Override
+	protected ArrayList<String> calculatePossibleMoves(ChessGameBoard board) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
