@@ -25,13 +25,6 @@ public class Bishop extends ChessGamePiece{
      *            the game board to calculate moves on
      * @return ArrayList<String> the moves
      */
-    @Override
-    protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
-        //se puede refactorizar
-        //Se emplea un Método para calcular todos los posibles movimientos
-        ArrayList<String> allMoves = MovimientosCalculados(board);
-        return allMoves;
-    }
 
     public ArrayList<String> MovimientosCalculados (ChessGameBoard board){
         ArrayList<String> northEastMoves = calculateNorthEastMoves( board, 8 );
