@@ -70,4 +70,9 @@ public class King
             );            
         }
     }
+
+	@Override
+	protected ArrayList<String> calculatePossibleMoves(ChessGameBoard board) {
+		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+	}
 }

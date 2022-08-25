@@ -72,15 +72,13 @@ public class ChessPanel
      * @return ChessGraveyard the graveyard requested
      */
     public ChessGraveyard getGraveyard( int whichPlayer ){
-        if ( whichPlayer == 1 ){
-            return playerOneGraveyard;
-        }
-        else if ( whichPlayer == 2 ){
-            return playerTwoGraveyard;
-        }
-        else
-        {
-            return null;
-        }
+			switch (whichPlayer) {
+				case 1:
+					return playerOneGraveyard;
+				case 2:
+					return playerTwoGraveyard;
+				default:
+					return null;
+			}
     }
 }

@@ -4,16 +4,7 @@ import java.awt.event.MouseListener;
 import java.awt.Color;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
-// -------------------------------------------------------------------------
-/**
- * The panel that represents the Chess game board. Contains a few methods that
- * allow other classes to access the physical board.
- *
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
- */
+//Inicializa la clase
 public class ChessGameBoard extends JPanel{
     private BoardSquare[][] chessCells;
     private BoardListener   listener;
@@ -160,39 +151,46 @@ public class ChessGameBoard extends JPanel{
         for ( int i = 0; i < chessCells.length; i++ ){
             for ( int j = 0; j < chessCells[0].length; j++ ){
                 ChessGamePiece pieceToAdd;
-                if ( i == 1 ) // black pawns
-                {
-                    pieceToAdd = new Pawn( this, i, j, ChessGamePiece.BLACK );
-                }
-                else if ( i == 6 ) // white pawns
-                {
-                    pieceToAdd = new Pawn( this, i, j, ChessGamePiece.WHITE );
-                }
-                else if ( i == 0 || i == 7 ) // main rows
-                {
-                    int colNum =
-                        i == 0 ? ChessGamePiece.BLACK : ChessGamePiece.WHITE;
-                    if ( j == 0 || j == 7 ){
-                        pieceToAdd = new Rook( this, i, j, colNum );
-                    }
-                    else if ( j == 1 || j == 6 ){
-                        pieceToAdd = new Knight( this, i, j, colNum );
-                    }
-                    else if ( j == 2 || j == 5 ){
-                        pieceToAdd = new Bishop( this, i, j, colNum );
-                    }
-                    else if ( j == 3 ){
-                        pieceToAdd = new King( this, i, j, colNum );
-                    }
-                    else
-                    {
-                        pieceToAdd = new Queen( this, i, j, colNum );
-                    }
-                }
-                else
-                {
-                    pieceToAdd = null;
-                }
+							switch (i) {
+							// black pawns
+								case 1:
+									pieceToAdd = new Pawn( this, i, j, ChessGamePiece.BLACK );
+									break;
+							// white pawns
+								case 6:
+									pieceToAdd = new Pawn( this, i, j, ChessGamePiece.WHITE );
+									break;
+							// main rows
+								case 0:
+								case 7:
+									int colNum =
+													i == 0 ? ChessGamePiece.BLACK : ChessGamePiece.WHITE;
+									switch (j) {
+										case 0:
+										case 7:
+											pieceToAdd = new Rook( this, i, j, colNum );
+											break;
+										case 1:
+										case 6:
+											pieceToAdd = new Knight( this, i, j, colNum );
+											break;
+										case 2:
+										case 5:
+											pieceToAdd = new Bishop( this, i, j, colNum );
+											break;
+										case 3:
+											pieceToAdd = new King( this, i, j, colNum );
+											break;
+										default:
+											pieceToAdd = new Queen( this, i, j, colNum );
+											break;
+									}
+									break;
+
+								default:
+									pieceToAdd = null;
+									break;
+							}
                 chessCells[i][j] = new BoardSquare( i, j, pieceToAdd );
                 if ( ( i + j ) % 2 == 0 ){
                     chessCells[i][j].setBackground( Color.WHITE );
@@ -207,9 +205,7 @@ public class ChessGameBoard extends JPanel{
         }
     }
     // ----------------------------------------------------------
-    /**
-     * Clears the colors on the board.
-     */
+//Limpiar el color sombreado
     public void clearColorsOnBoard(){
         for ( int i = 0; i < chessCells.length; i++ ){
             for ( int j = 0; j < chessCells[0].length; j++ ){
@@ -240,6 +236,7 @@ public class ChessGameBoard extends JPanel{
          * @param e
          *            the event from the listener
          */
+				@Override
         public void mouseClicked( MouseEvent e ){
             if ( e.getButton() == MouseEvent.BUTTON1 &&
                 getParent() instanceof ChessPanel ){
@@ -253,6 +250,7 @@ public class ChessGameBoard extends JPanel{
          * @param e
          *            the mouse event from the listener
          */
+				@Override
         public void mouseEntered( MouseEvent e ){ /* not used */
         }
         /**
@@ -261,6 +259,7 @@ public class ChessGameBoard extends JPanel{
          * @param e
          *            the mouse event from the listener
          */
+				@Override
         public void mouseExited( MouseEvent e ){ /* not used */
         }
         /**
@@ -269,6 +268,7 @@ public class ChessGameBoard extends JPanel{
          * @param e
          *            the mouse event from the listener
          */
+				@Override
         public void mousePressed( MouseEvent e ){ /* not used */
         }
         /**
@@ -277,6 +277,7 @@ public class ChessGameBoard extends JPanel{
          * @param e
          *            the mouse event from the listener
          */
+				@Override
         public void mouseReleased( MouseEvent e ){ /* not used */
         }
     }

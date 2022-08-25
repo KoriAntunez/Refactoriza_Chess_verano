@@ -131,22 +131,21 @@ public abstract class ChessGamePiece{
     protected ArrayList<String> calculateSouthMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = pieceRow + 1; i < 8 && count < numMoves; i++ ){
-                if ( ( board.getCell( i, pieceColumn ).getPieceOnSquare()
-                    == null || isEnemy( board, i, pieceColumn ) ) ){
-                    moves.add( i + "," + pieceColumn );
-                    count++;
-                    if ( isEnemy( board, i, pieceColumn ) ){
-                        break;
-                    }
-                }
+                if ( board.getCell( i, pieceColumn ).getPieceOnSquare() != null && !isEnemy( board, i, pieceColumn ) ){
+									break;
+								}
                 else
-                {
-                    break;
-                }
+								{
+									moves.add( i + "," + pieceColumn );
+									count++;
+									if ( isEnemy( board, i, pieceColumn ) ){
+										break;
+									}
+								}
             }
         }
         return moves;
