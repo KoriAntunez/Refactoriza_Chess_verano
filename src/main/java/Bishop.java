@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
@@ -18,8 +17,31 @@ public class Bishop extends ChessGamePiece{
     public Bishop( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
     }
+    /**
+     * Calculates the possible moves for this piece. These are ALL the possible
+     * moves, including illegal (but at the same time valid) moves.
+     * 
+     * @param board
+     *            the game board to calculate moves on
+     * @return ArrayList<String> the moves
+     */
+    @Override
+    protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
 
+    }
 
+    public ArrayList<String> MovimientosCalculados (ChessGameBoard board){
+        ArrayList<String> northEastMoves = calculateNorthEastMoves( board, 8 );
+        ArrayList<String> northWestMoves = calculateNorthWestMoves( board, 8 );
+        ArrayList<String> southEastMoves = calculateSouthEastMoves( board, 8 );
+        ArrayList<String> southWestMoves = calculateSouthWestMoves( board, 8 );
+        ArrayList<String> resultMocves = new ArrayList<String>();
+        resultMocves.addAll(northEastMoves);
+        resultMocves.addAll(northWestMoves);
+        resultMocves.addAll(southEastMoves);
+        resultMocves.addAll(southWestMoves);
+        return resultMocves;
+    } 
     /**
      * Creates an icon for this piece depending on the piece's color.
      * 
